@@ -1,0 +1,29 @@
+{% extends 'admin/main.html'%}
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {%endblock%}
+    {% block content %}
+<table class="table text-center mt-4">
+    <thead>
+      <tr>
+        <th scope="col">OrderId</th>
+        <th scope="col">Userid</th>
+        <th scope="col">Address</th>
+        <th scope="col">Order-date</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+      <tr>
+        <th scope="row">{{order.orderid}}</th>
+        <td>{{order.userid}}</td>
+        <td>{{order.address}}</td>
+        <td>{{order['order-date']}}</td>
+      </tr>
+    {% endfor%}
+    </tbody>
+  </table>
+  {%endblock%}
+  {% block scripts %}
+{{super()}}
+{% endblock %}
