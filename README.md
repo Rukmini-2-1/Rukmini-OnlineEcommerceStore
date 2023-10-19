@@ -8,15 +8,16 @@ Python 3.6 or later version
 MongoDB
 
 ### Installation and setup
-Clone the repository
-git clone :
-Install dependencies
-pip install -r requirements.txt
-Setup MongoDB
-Install MongoDB
-Start MongoDB server
-Create a database named "FashionStore" and create collections "users" , "products" ,"cart_collection" , "admin", "orders"
-run the app.py using flask run
+##### Clone the repository
+##### git clone :https://github.com/Rukmini-2-1/Rukmini-OnlineEcommerceStore.git
+##### create a virtual environment in the clone
+##### Install dependencies from requirements.txt
+##### pip install -r requirements.txt
+##### install mongoDB 
+##### Setup MongoDB 
+##### Start MongoDB server
+##### Create a database named "FashionStore" and create collections "users" , "products" ,"cart_collection" , "admin", "orders"
+##### run the app.py using flask run
 
 ### Functionalities
 #### Login / signup page :
