@@ -2,6 +2,22 @@
 
 ## Description
 Welcome to the project, This is a online e-commerce store made in python using flask framework . This is an online clothing store where users view different outfits and add them to cart.
+
+###Prerequisites
+Python 3.6 or later version
+MongoDB
+
+### Installation and setup
+Clone the repository
+git clone :
+Install dependencies
+pip install -r requirements.txt
+Setup MongoDB
+Install MongoDB
+Start MongoDB server
+Create a database named "FashionStore" and create collections "users" , "products" ,"cart_collection" , "admin", "orders"
+run the app.py using flask run
+
 ### Functionalities
 #### Login / signup page :
 users have to signup as new user to purchase the items.
