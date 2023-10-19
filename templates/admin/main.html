@@ -1,0 +1,77 @@
+{% extends "messages.html"  %}
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+    nav{
+        color: rgb(128, 113, 123);
+        text-align:right;
+        padding:10px;
+        background-color: #ffd0ef;
+
+    }
+    nav ul{
+        list-style: none;
+        padding: 0;
+    }
+    nav ul li{
+        display:inline;
+        margin:0 20px;
+    }
+    nav a{
+        text-decoration: none;
+        color:#b695aa;
+        font-weight: bold;;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<body>
+    <nav>
+        <ul>
+            {%if admin %}
+            <li> <a>admin </a></li>
+            <li> <a href="/logout">LOGOUT</a> </li>
+            {%else%}
+            <li > <a  href="/login">LOGIN</a> </li>
+            {%endif%}
+        </ul>
+    </nav>
+    <div class="main">
+        <h3 class="text-center mt-4">WELCOME ADMIN!!</h3>
+        <div class="row mt-4 d-flex justify-content-around">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body ">
+                        <p class="card-text"> You can add products into collections specifying the category </p>
+                        <a href="/addproduct" class="btn btn-primary ">Add products</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text"> You can delete products from collections </p>
+                        <a href="/deleteproduct" class="btn btn-primary">Delete Products</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text"> You can view the orders placed by various users</p>
+                        <a href="/orders" class="btn btn-primary">Orders placed</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    {% endblock %}
+    {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+{% endblock %}
+    </body>
