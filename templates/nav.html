@@ -1,0 +1,118 @@
+{% block head %}
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+{%endblock%}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="alert-container">
+      {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show bg" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% endwith %}
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #f5add6;">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand mt-2 mt-lg-0" href="/">
+          <img
+            src="{{url_for('static',filename='images/fs.png')}}"
+            height="40"
+            alt="Logo"
+            loading="lazy"
+          />
+        </a>
+        <!-- Left links -->
+        <ul class="text-center navbar-nav" >
+          <h4 style="color:white ">FASHION STORE </h4>
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <div class="dropdown" >
+              <button class="btn " style="color: #faf1f9;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Men
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('products', category='men', type='ethnic') }}">Ethnic Wear</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('products', category='men', type='casual') }}">Casuals</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn  "style="color: #faf1f9;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Women
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('products', category='women', type='ethnic') }}">Ethnic Wear</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('products', category='women', type='casual') }}">Casuals</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn " style="color: #faf1f9;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Kids
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('products', category='kids', type='ethnic') }}">Ethnic Wear</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('products', category='kids', type='casual') }}">Casuals</a></li>
+              </ul>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <!-- Icon -->
+        <form class="d-flex navbar-nav"  method="post" action="/search">
+          <input class="form-control me-2 nav-item"  type="search" placeholder="Search" aria-label="Search" name="q">
+          <button class="btn" style="color:white" type="submit">Search</button>
+        </form>
+    
+        <a class="text-reset me-3" href="{{url_for('cart')}}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart text-white" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+        </a>
+      </div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if 'user' in session %}
+        <li class="nav-item">
+          <div class="navbar-text text-center" style="color:white">{{session['user'][0]}}</div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:white" href="/logout">logout</a>
+        </li>
+        </li>
+        {%else %}
+        <li class="nav-item" >
+          <a class="nav-link" style="color:white" href="/login">login</a>
+        </li>
+        {%endif%}
+      </ul>
+    </div>
+  </nav>
+  {% endblock %}
+  {% block content %}
+  {% endblock %}
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+{% endblock %}

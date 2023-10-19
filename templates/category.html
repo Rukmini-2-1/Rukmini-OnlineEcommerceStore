@@ -1,0 +1,68 @@
+{% extends 'carousel.html' %}
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{%endblock%}
+{%block content%}
+<div class="container">
+    <h1 class="m-3">Shop by category</h1>
+    <div class="row mb-2" >
+      <div class="col-sm-3 mt-3">
+        <div class="card shadow-sm" id="card1">
+          <img src="static/images/products/boys.jpg" class="card-img-top" alt=".." height="275px">
+          <div class="card-body">
+            <h5 class="card-title text-center">Boys</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 mt-3">
+        <div class="card shadow-sm " id="card2">
+          <img src="static/images/products/girls.jpg" class="card-img-top" alt=""height="275px">
+          <div class="card-body">
+            <h5 class="card-title text-center">Girls</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 mt-3">
+        <div class="card shadow-sm " id="card3">
+          <img src="static/images/products/girls.jpg" class="card-img-top" alt=""height="275px">
+          <div class="card-body">
+            <h5 class="card-title text-center">Women</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 mt-3">
+        <div class="card shadow-sm " id="card4">
+          <img src="static/images/products/men_ethnic4.jpg" class="card-img-top" alt=""height="275px">
+          <div class="card-body">
+            <h5 class="card-title text-center">Men</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    const card1 = document.getElementById('card1');
+card.addEventListener('click', () => {
+    // On click, redirect to the other page using the Flask route
+    window.location.href = "/boys"
+});
+const card2 = document.getElementById('card2');
+card.addEventListener('click', () => {
+    // On click, redirect to the other page using the Flask route
+    window.location.href = "/girls"
+});
+const card3 = document.getElementById('card3');
+card.addEventListener('click', () => {
+    // On click, redirect to the other page using the Flask route
+    window.location.href = "/women"
+});
+const card4 = document.getElementById('card4');
+card.addEventListener('click', () => {
+    // On click, redirect to the other page using the Flask route
+    window.location.href = "/men"
+});
+</script>
+
+{% endblock %}
