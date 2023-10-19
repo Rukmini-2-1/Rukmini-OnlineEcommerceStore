@@ -1,0 +1,51 @@
+.topnav {
+  overflow: hidden;
+  background-color: #ffacdb;
+  top: 0;
+}
+
+.topnav a {
+  float: right;
+  color: #575757;
+  text-align: center;
+  margin-top: -10px;
+  padding: 20px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style for the left side menu */
+.sidenav {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fface5;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #4a4848;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Add a left margin to avoid content overlaping the side menu */
+  font-size: 20px; /* Increased text to make available space appear smaller */
+  padding: 0px 10px;
+}

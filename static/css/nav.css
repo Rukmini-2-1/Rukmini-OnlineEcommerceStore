@@ -1,0 +1,10 @@
+.sidebar2{ /* Added right bar to this rule */
+    width: 200px;
+    height: 100%;
+    padding: 30px 0px;
+    position: fixed;
+  }
+  .sidebar2 { /* Added rule for right bar */
+    right: 0;
+  }
+  
