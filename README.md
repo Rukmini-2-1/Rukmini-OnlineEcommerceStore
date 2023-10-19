@@ -14,7 +14,8 @@ when users click on add to cart, then they will be redirected to cart where user
 If user clicks on empty cart option then all the items will be removed from cart.
 #### confirm order:
 when users click on checkout option , they will be redirected to payment options and address for shipment.
-#### Admin :When admin logs in ,he can add new items, delete existing items and view the orders placed by several users.
+#### Admin :
+When admin logs in ,he can add new items, delete existing items and view the orders placed by several users.
 #### Database:
 The products are stored in products collection
 The orders are stored in orders collection 
