@@ -1,0 +1,93 @@
+{% extends 'base.html' %}  
+{% block head %}
+<style>
+    .center-container{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:20vw;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>shopping cart</title> 
+    {%endblock%}
+    {% block content %}
+    {% if cart_items %} 
+    <div class="container mt-2">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="text-start">
+                <form method="POST" action="/empty">
+                    <button type="submit" class="btn btn-danger">Empty cart</button>
+                </form>
+            </div>
+            <h1 class="text-center">Your cart</h1> 
+            <div style="width:150px"></div>
+        </div>
+        <table class="table"> 
+                
+             <tbody> 
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th>price</th>
+                    <th>SubTotal</th>
+                </tr>
+                {% for item in cart_items %} 
+                <tr> 
+                    <td>
+                        <div>
+                        <img src="{{item.image}}" style = "height : 150px;"class="img-fluid">
+                        <p class="mb-1">{{ item.name }}</p>
+                        <p><strong class="text-success">In stock</strong></p>
+                        </div>
+                    </td>
+                    <td>
+                        <form method="post" action="/update">
+                        <input type="number" name="quantity" min="1" value="{{item.quantity}}" style = "text-align : center; width : 8vw;">
+                    </td>
+                    <td>{{ item.price }}</td>
+                    {% set subtotal = item.quantity|int * item.price|float  %}
+                    <td>{{subtotal}} </td>
+                    <td>
+                            <input class='form-control' type="hidden" name="product_id" value="{{item.productid}}">
+                            <button type="submit" class="btn btn-warning"> Update cart</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="/remove_from_cart">
+                            <input type="hidden" name="product_id" value="{{item.productid}}">
+                            <button type="submit" class="btn btn-danger">Remove from cart</button>
+                        </form>
+                    </td>
+                </tr> 
+                 {% endfor %}
+             </tbody> 
+        </table> 
+        <div class="row mt-1 mb-2">
+            <div class="col-md-4">
+                <div class="text-start">
+                    <a href="/" class="btn btn-primary btn-block">Continue shopping</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center">Grand Total: Rs {{grandtotal}} </h4>
+            </div>
+            <div class="col-md-4">
+                <div class="text-end">
+                    <a href="/checkout"  class="btn btn-success">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="center-container">
+    <img src="static/images/products/cart_empty1.jpg" alt="cart empty picture" style="margin:auto;">
+</div>
+<p class="text-center text-danger" style="margin-top: 10rem; font-size: 20px;"><strong>cart is empty!!</strong></p>
+
+    {% endif %}
+    {% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+{% endblock %}
